@@ -24,8 +24,10 @@ wrapper in pybind11.
 
 after cloning the repo,
 ```
-python setup.py build_ext --inplace
+python setup.py install --user
 ```
+for instance in your favorite venv, which will let you access the library
+anywhere.
 
 Then you should be able to run `demo_qatspy.py`. The output should be:
 ```
