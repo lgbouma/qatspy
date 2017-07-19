@@ -159,7 +159,6 @@ void qats_indices(double * d, int M, int DeltaMin, int DeltaMax, int N, int q, d
   // Use after finding the most likely parameters with detectMqNoTimes or even wider search on DeltaMin, DeltaMax or q.
   double ** Smn = new double*[M]; for (int i = 0; i < M; i++) { Smn[i] = new double[N-q+1]; }
   computeSmn(d, M, DeltaMin, DeltaMax, N, q, Smn, Sbest);	    
-  indices = new int[M];
   optIndices(M, DeltaMin, DeltaMax, N, q, Smn, indices);
   
   for (int i = 0; i < M; i++) { delete[] Smn[i]; }

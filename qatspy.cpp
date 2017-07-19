@@ -68,11 +68,6 @@ py::array_t<int> qats_indices_wrapper(py::array_t<double> d, int M, int
         S_best,
         indices_p);
 
-  //TODO: why is indices returning nonsense?
-  //for (int i = 0; i < M; i++) {
-  //  std::cout << i << "\t" << static_cast<int>(indices[i]) << std::endl;
-  //}
-
   return indices;
 }
 
