@@ -1,8 +1,8 @@
 This is a wrapper for the Quasiperiodic Automated Transit Search (QATS)
 algorithm.
 
-If you use the code, please cite Carter & Agol (2012) and Kel'manov and Jeon
-(2004).
+If you use the code, please cite [Carter & Agol (2012)](https://arxiv.org/abs/1210.5136) and 
+[Kel'manov and Jeon (2004)](http://ieeexplore.ieee.org/document/1268358/).
 
 [Pim Schellart](https://github.com/pschella) showed me how to implement the
 wrapper in pybind11.
