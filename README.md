@@ -26,7 +26,7 @@ wrapper in pybind11.
 ## Install
 
 after cloning the repo,
-```python
+```bash
 python setup.py install --user
 ```
 for instance in your favorite venv, which will let you access the library
