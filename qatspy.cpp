@@ -6,6 +6,17 @@
 namespace py=pybind11;
 
 py::array_t<double> shConvol_wrapper(py::array_t<double> y, int q) {
+  //
+  // shConvol: convolves the data, y, comprised of N datum, with a box of unit
+  // depth (or height -- see PARITY in qats.cpp) and returns the result of size
+  // N-q+1 in d.
+  //
+  // inputs:	y - data
+  //		N - size of y
+  //		q - size of box
+  // outputs:	d - convolved data of size N-q+1
+  // pre:		d - is allocated with appropriate size
+  //
 
   auto buf_y = y.request();
   int N = buf_y.size;
@@ -27,6 +38,21 @@ py::array_t<double> shConvol_wrapper(py::array_t<double> y, int q) {
 
 std::pair<double,int> qats_wrapper( py::array_t<double> d, int DeltaMin, int
     DeltaMax, int N, int q) {
+  //
+  // qats: determines the maximum metric Sbest over the set of transits instants
+  // for minimum interval DeltaMin and maximum interval DeltaMax for transits of
+  // duration (box-width) q by searching the box-convolved data d (of size N).
+  // d may be computed with shConvol prior to this call (or by another
+  // appropriate filter).
+  //
+  // inputs:	d - convolved data
+  //		DeltaMin - minimum interval (in cadences)
+  //		DeltaMax - maximum interval (in cadences)
+  //		N - size of convolved data
+  //		q - duration (width) of box signal
+  // outputs:	Sbest - maximum of obj. function for optimal transit instants
+  //		Mbest - number of transits in d corresponding to Sbest
+  //
 
   auto buf_d = d.request();
 
@@ -51,6 +77,23 @@ std::pair<double,int> qats_wrapper( py::array_t<double> d, int DeltaMin, int
 
 py::array_t<int> qats_indices_wrapper(py::array_t<double> d, int M, int
     DeltaMin, int DeltaMax, int N, int q) {
+  //
+  // qats_indices: determines the maximum metric Sbest over the set of transit
+  // instants for minimum interval DeltaMin and maximum interval DeltaMax
+  // for M transits of duration (box-width) q by searching the box-convolved
+  // data d (of size N). d may be computed with shConvol prior to this call
+  // (or by another appropriate filter). The indices of the best transit instants
+  // are also returned.
+  //
+  // inputs:	d - convolved data
+  //		M - number of transits
+  //		DeltaMin - minimum interval (in cadences)
+  //		DeltaMax - maximum interval (in cadences)
+  //		N - size of convolved data
+  //		q - duration (width) of box signal
+  // outputs:	Sbest - maximum of obj. function for optimal transit instants
+  //		indices - array of M optimal transit instants (cadence #)
+  //
 
   double S_best;
   auto buf_d = d.request();
