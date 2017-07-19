@@ -2,3 +2,5 @@
 tmp*
 build*
 __pycache__*
+dist*
+qatspy.egg-info*
