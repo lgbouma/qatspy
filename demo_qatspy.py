@@ -20,8 +20,6 @@ S_best, M_best = result[0], result[1]
 
 print('S_best: {:.4f}, M_best: {:d}'.format(S_best, M_best))
 
-#del d
-d = qatspy.shConvol_wrapper(flux, q)
 inds = qatspy.qats_indices_wrapper(d, M_best, Δ_min, Δ_max,
         int(len(flux)), q)
 
